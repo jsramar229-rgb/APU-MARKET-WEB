@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% import "_iconos.html" as ic %}
+
+{% block titulo %}Libro de Reclamaciones Virtual | APU Market{% endblock %}
+{% block descripcion %}Libro de Reclamaciones Virtual de APU 3D Soluciones Integrales S.A.C., conforme al Código de Protección y Defensa del Consumidor.{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor">
+  <nav class="migas" aria-label="Ruta">
+    <a href="{{ url_for('home') }}">Inicio</a> / <span>Libro de Reclamaciones</span>
+  </nav>
+</div>
+
+<section class="seccion" style="padding-top:16px">
+  <div class="contenedor">
+
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Conforme a ley</p>
+      <h2>Libro de Reclamaciones Virtual</h2>
+      <p>
+        {{ empresa.razon_social }} pone a disposición de sus consumidores este Libro de
+        Reclamaciones, conforme al Código de Protección y Defensa del Consumidor.
+      </p>
+    </div>
+
+    <div class="form-card">
+
+      <div class="aviso">
+        <strong>Queja</strong> es tu disconformidad con la atención recibida.
+        <strong>Reclamo</strong> es tu disconformidad con el producto o servicio.
+        Responderemos en un plazo máximo de <strong>quince (15) días hábiles</strong>,
+        y recibirás una copia de tu registro en el correo que indiques.
+      </div>
+
+      <form id="formReclamo" novalidate>
+
+        <div class="form-seccion">
+          <h3>1. Identificación del consumidor</h3>
+          <div class="form-fila">
+            <div class="campo">
+              <label for="nombres">Nombres <span class="ayuda">(obligatorio)</span></label>
+              <input type="text" id="nombres" name="nombres" required>
+            </div>
+            <div class="campo">
+              <label for="apellidos">Apellidos <span class="ayuda">(obligatorio)</span></label>
+              <input type="text" id="apellidos" name="apellidos" required>
+            </div>
+          </div>
+          <div class="form-fila">
+            <div class="campo">
+              <label for="tipo_doc">Tipo de documento</label>
+              <select id="tipo_doc" name="tipo_doc">
+                <option>DNI</option><option>Carné de extranjería</option>
+                <option>Pasaporte</option><option>RUC</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="num_doc">Número de documento <span class="ayuda">(obligatorio)</span></label>
+              <input type="text" id="num_doc" name="num_doc" required>
+            </div>
+          </div>
+          <div class="form-fila">
+            <div class="campo">
+              <label for="correo">Correo electrónico <span class="ayuda">(obligatorio)</span></label>
+              <input type="email" id="correo" name="correo" required>
+            </div>
+            <div class="campo">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono">
+            </div>
+          </div>
+          <div class="campo">
+            <label for="domicilio">Domicilio <span class="ayuda">(obligatorio)</span></label>
+            <input type="text" id="domicilio" name="domicilio" required>
+          </div>
+          <div class="campo">
+            <label for="menor">¿Es menor de edad?</label>
+            <select id="menor" name="menor">
+              <option value="no">No</option>
+              <option value="si">Sí — indicar datos del apoderado en el detalle</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-seccion">
+          <h3>2. Identificación del bien contratado</h3>
+          <div class="form-fila">
+            <div class="campo">
+              <label for="tipo_bien">Tipo</label>
+              <select id="tipo_bien" name="tipo_bien">
+                <option value="producto">Producto</option>
+                <option value="servicio">Servicio</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="monto">Monto reclamado (S/)</label>
+              <input type="number" id="monto" name="monto" step="0.01" min="0">
+            </div>
+          </div>
+          <div class="campo">
+            <label for="descripcion_bien">Descripción del producto o servicio <span class="ayuda">(obligatorio)</span></label>
+            <input type="text" id="descripcion_bien" name="descripcion_bien" required>
+          </div>
+          <div class="campo">
+            <label for="pedido">Número de pedido o comprobante <span class="ayuda">(si lo tienes)</span></label>
+            <input type="text" id="pedido" name="pedido">
+          </div>
+        </div>
+
+        <div class="form-seccion">
+          <h3>3. Detalle de la reclamación</h3>
+          <div class="campo">
+            <label for="tipo_reclamo">Tipo <span class="ayuda">(obligatorio)</span></label>
+            <select id="tipo_reclamo" name="tipo_reclamo" required>
+              <option value="reclamo">Reclamo — disconformidad con el producto o servicio</option>
+              <option value="queja">Queja — disconformidad con la atención</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="detalle">Detalle <span class="ayuda">(obligatorio)</span></label>
+            <textarea id="detalle" name="detalle" required
+              placeholder="Cuéntanos qué ocurrió, con fechas y datos concretos."></textarea>
+          </div>
+          <div class="campo">
+            <label for="pedido_consumidor">Tu pedido concreto <span class="ayuda">(obligatorio)</span></label>
+            <textarea id="pedido_consumidor" name="pedido_consumidor" required
+              placeholder="¿Qué esperas de nosotros? Cambio, devolución, reembolso, disculpa…"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primario btn-bloque">Enviar reclamación</button>
+        <p style="font-size:.78rem;color:var(--texto-suave);margin-top:14px;text-align:center">
+          Al enviar aceptas que usemos tus datos únicamente para atender esta reclamación.
+        </p>
+      </form>
+
+      <div id="reclamoOk" hidden style="text-align:center;padding:24px 0">
+        <div style="color:var(--kay);margin-bottom:12px">{{ ic.ui('check') }}</div>
+        <h3 style="font-size:1.3rem">Reclamación registrada</h3>
+        <p style="color:var(--texto-suave);margin-top:10px">
+          Tu código es <strong id="codigoReclamo"></strong>. Guárdalo.
+          Te responderemos al correo indicado dentro de quince (15) días hábiles.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+/* Registro del reclamo.
+   PENDIENTE ANTES DE PUBLICAR: conectar el envío a un correo o servicio real.
+   Hoy solo confirma en pantalla; la constancia al consumidor es obligatoria. */
+document.getElementById('formReclamo').addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (!this.checkValidity()) { this.reportValidity(); return; }
+  var datos = Object.fromEntries(new FormData(this).entries());
+  var codigo = 'APU-' + Date.now().toString().slice(-8);
+  console.log('Reclamación registrada', codigo, datos);
+  document.getElementById('codigoReclamo').textContent = codigo;
+  this.hidden = true;
+  document.getElementById('reclamoOk').hidden = false;
+  window.scrollTo({ top: this.offsetTop - 120, behavior: 'smooth' });
+});
+</script>
+{% endblock %}

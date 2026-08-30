@@ -1,0 +1,91 @@
+{% import "_iconos.html" as ic %}
+
+{# Visual del producto: foto real si existe, icono mientras no.
+   Nada se rompe si el campo foto está en None. #}
+{% macro visual_producto(p, alto='') %}
+<div class="producto-visual {{ p.mundo }} {{ alto }}">
+  {% if p.foto %}
+    <img src="{{ url_for('static', filename='img/productos/' ~ p.foto) }}"
+         alt="{{ p.nombre }}" loading="lazy" width="800" height="800">
+  {% else %}
+    {{ ic.producto(p.icono) }}
+  {% endif %}
+  <span class="producto-etiqueta">{{ p.etiqueta }}</span>
+</div>
+{% endmacro %}
+
+{% macro tarjeta_producto(p) %}
+<article class="producto">
+  <a href="{{ url_for('producto', slug=p.slug) }}" class="producto-enlace"
+     aria-label="Ver {{ p.nombre }}">
+    {{ visual_producto(p) }}
+  </a>
+  <div class="producto-info">
+    <h3 class="producto-nombre">
+      <a href="{{ url_for('producto', slug=p.slug) }}">{{ p.nombre }}</a>
+    </h3>
+    <p class="producto-desc">{{ p.desc }}</p>
+    <div class="producto-pie">
+      <div class="producto-precio"><span>S/</span>{{ '%.2f'|format(p.precio) }}</div>
+      {# Datos por atributo + delegación de eventos: nada de JSON dentro de onclick,
+         que rompe el atributo cuando el nombre lleva comillas. #}
+      <button class="producto-add js-agregar"
+              data-id="{{ p.id }}"
+              data-nombre="{{ p.nombre }}"
+              data-precio="{{ p.precio }}"
+              data-mundo="{{ p.mundo }}"
+              data-foto="{{ p.foto or '' }}"
+              type="button"
+              aria-label="Agregar {{ p.nombre }} al carrito">
+        {{ ic.ui('mas') }}
+      </button>
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
+{% macro grilla(productos) %}
+{% if productos %}
+<div class="productos-grid">
+  {% for p in productos %}{{ tarjeta_producto(p) }}{% endfor %}
+</div>
+{% else %}
+<div class="vacio">
+  <p>No hay productos en esta selección todavía.</p>
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro tarjetas_mundos(mundos) %}
+<div class="mundos-grid">
+  {% for clave, m in mundos.items() %}
+  <a class="mundo-card {{ clave }}" href="{{ url_for('mundo', slug=m.slug) }}">
+    {{ ic.mundo(clave, 'mundo-icono') }}
+    <h3>{{ m.nombre }}</h3>
+    <div class="mundo-trad">{{ m.traduccion }} — {{ m.esencia }}</div>
+    <p>{{ m.descripcion }}</p>
+    <div class="mundo-pie">
+      <span class="mundo-rubro">{{ m.rubro }}</span>
+      {{ ic.ui('flecha', 'mundo-flecha') }}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# Tabla de datos para ficha / origen / envío. No se dibuja si está vacía. #}
+{% macro bloque_datos(titulo, datos) %}
+{% if datos %}
+<div class="datos-bloque">
+  <h3>{{ titulo }}</h3>
+  <dl class="datos-lista">
+    {% for etiqueta, valor in datos.items() %}
+    <div class="datos-fila">
+      <dt>{{ etiqueta }}</dt>
+      <dd>{{ valor }}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+</div>
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% import "_componentes.html" as c %}
+{% import "_iconos.html" as ic %}
+
+{% block titulo %}Nosotros | APU Market{% endblock %}
+{% block descripcion %}APU Market nace del concepto de los tres: tres hermanos, tres oficios, tres mundos de la cosmovisión andina.{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor">
+  <nav class="migas" aria-label="Ruta">
+    <a href="{{ url_for('home') }}">Inicio</a> / <span>Nosotros</span>
+  </nav>
+</div>
+
+<section class="seccion" style="padding-top:16px">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Quiénes somos</p>
+      <h2>El concepto de los tres</h2>
+      <p class="seccion-quechua">Kimsa</p>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;font-size:1.02rem;color:var(--texto-suave)">
+      <p style="margin-bottom:18px">
+        APU Market nace de una idea que se repite: <strong style="color:var(--texto)">tres</strong>.
+        Tres hermanos que levantan una empresa familiar, tres oficios distintos que se
+        complementan, y los tres planos en que la cosmovisión andina ordena el universo.
+      </p>
+      <p style="margin-bottom:18px">
+        <em>Apu</em> es la divinidad tutelar de las montañas. De ahí viene nuestro nombre y
+        de ahí viene la forma en que organizamos la tienda: cada producto pertenece a uno
+        de los tres mundos, y juntos forman algo completo.
+      </p>
+      <p>
+        Somos una empresa peruana formalmente constituida. Vendemos con boleta o factura
+        electrónica, coordinamos cada pedido de forma directa y respondemos con nombre propio.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="separador"></div>
+
+<section class="seccion seccion-alt">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Nuestra estructura</p>
+      <h2>Los Tres Mundos</h2>
+    </div>
+    {{ c.tarjetas_mundos(mundos) }}
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Escríbenos</p>
+      <h2>Contacto</h2>
+      <p>{{ empresa.zona_atencion }}<br>{{ empresa.horario }}</p>
+      <div class="hero-cta" style="margin-top:26px">
+        <a href="https://wa.me/{{ empresa.whatsapp }}" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          {{ ic.ui('whatsapp') }} WhatsApp {{ empresa.whatsapp_visible }}
+        </a>
+        <a href="mailto:{{ empresa.correo }}" class="btn btn-linea">{{ ic.ui('correo') }} {{ empresa.correo }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

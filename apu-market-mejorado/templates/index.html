@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% import "_componentes.html" as c %}
+{% import "_iconos.html" as ic %}
+
+{% block contenido %}
+
+<section class="hero">
+  <div class="contenedor">
+    <span class="hero-etiqueta">{{ ic.ui('estrella', 'chevron') }} Qhatu Andino</span>
+    <h1>
+      APU MARKET
+      <span class="hero-quechua">Kimsa Pacha Qhatu</span>
+    </h1>
+    <p class="hero-lema">Donde los tres mundos se encuentran</p>
+    <p class="hero-desc">
+      Lo que nace de la tierra, lo que llega de otros horizontes y lo que se hace
+      a tu medida. Tres mundos, una sola tienda.
+    </p>
+    <div class="hero-cta">
+      <a href="#mundos" class="btn btn-oro">Explorar los tres mundos {{ ic.ui('flecha') }}</a>
+      {% if campana.activa %}
+      <a href="{{ url_for('kusi_navidad') }}" class="btn btn-linea">{{ campana.nombre }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if campana.activa %}
+<section class="campana-franja">
+  <div class="contenedor">
+    <span class="campana-nota">Edición especial</span>
+    <h2>{{ campana.nombre }}</h2>
+    <p>{{ campana.descripcion }}</p>
+    {% if productos_campana %}
+    <div class="productos-grid" style="text-align:left;margin-bottom:32px">
+      {% for p in productos_campana %}{{ c.tarjeta_producto(p) }}{% endfor %}
+    </div>
+    {% endif %}
+    <a href="{{ url_for('kusi_navidad') }}" class="btn btn-linea">Ver toda la colección {{ ic.ui('flecha') }}</a>
+  </div>
+</section>
+{% endif %}
+
+<section class="seccion" id="mundos">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Nuestra esencia</p>
+      <h2>Los Tres Mundos</h2>
+      <p class="seccion-quechua">Kimsa Pacha</p>
+      <p>
+        La cosmovisión andina divide el universo en tres planos. Cada producto de
+        APU Market nace de uno de ellos. Elige el tuyo.
+      </p>
+    </div>
+    {{ c.tarjetas_mundos(mundos) }}
+  </div>
+</section>
+
+<div class="separador"></div>
+
+<section class="seccion seccion-alt">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Selección</p>
+      <h2>Productos destacados</h2>
+      <p class="seccion-quechua">Allin Ruraykuna</p>
+    </div>
+    {{ c.grilla(destacados) }}
+  </div>
+</section>
+
+<section class="seccion">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Cómo comprar</p>
+      <h2>Simple y directo</h2>
+      <p>
+        Arma tu pedido en el carrito y lo cerramos por WhatsApp, donde coordinamos
+        el pago y el envío según tu distrito. Emitimos boleta o factura electrónica.
+      </p>
+      <div class="pagos-portada">
+        {% for pago in pagos %}
+        <div class="pago-portada">
+          <span class="pago-portada-icon">{{ ic.ui(pago.icono) }}</span>
+          <span><strong>{{ pago.nombre }}</strong><small>{{ pago.detalle }}</small></span>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="hero-cta" style="margin-top:28px">
+        <a href="https://wa.me/{{ empresa.whatsapp }}" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          {{ ic.ui('whatsapp') }} Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

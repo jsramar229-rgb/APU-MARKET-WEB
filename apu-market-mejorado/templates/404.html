@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "_componentes.html" as c %}
+{% import "_iconos.html" as ic %}
+
+{% block titulo %}Página no encontrada | APU Market{% endblock %}
+
+{% block contenido %}
+<section class="seccion" style="padding:110px 0 60px">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Error 404</p>
+      <h2>Este camino no lleva a ningún mundo</h2>
+      <p>La página que buscas no existe o cambió de dirección.</p>
+      <div class="hero-cta" style="margin-top:26px">
+        <a href="{{ url_for('home') }}" class="btn btn-primario">Volver al inicio {{ ic.ui('flecha') }}</a>
+        <a href="https://wa.me/{{ empresa.whatsapp }}" target="_blank" rel="noopener" class="btn btn-linea">{{ ic.ui('whatsapp') }} Escríbenos</a>
+      </div>
+    </div>
+    {{ c.tarjetas_mundos(mundos) }}
+  </div>
+</section>
+{% endblock %}

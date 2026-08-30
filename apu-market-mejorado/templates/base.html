@@ -1,0 +1,181 @@
+{% import "_iconos.html" as ic %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}APU Market — Donde los tres mundos se encuentran{% endblock %}</title>
+  <meta name="description" content="{% block descripcion %}Marketplace peruano inspirado en la cosmovisión andina. Productos orgánicos, importados y personalizados.{% endblock %}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="APU Market">
+  <meta property="og:title" content="{{ self.titulo() }}">
+  <meta property="og:description" content="{{ self.descripcion() }}">
+  <meta property="og:locale" content="es_PE">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+{% if campana.activa %}
+<div class="barra-campana">
+  <a href="{{ url_for('kusi_navidad') }}">{{ campana.barra }} &rarr;</a>
+</div>
+{% endif %}
+
+<header class="header">
+  <div class="header-inner">
+
+    <a href="{{ url_for('home') }}" class="marca">
+      {{ ic.marca('marca-icono') }}
+      <span>
+        <span class="marca-texto">APU MARKET</span>
+        <span class="marca-sub">Kimsa Pacha Qhatu</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegación principal">
+      <div class="nav-item">
+        <button class="nav-link" id="btnMundos" aria-expanded="false" aria-controls="menuMundos">
+          Tres Mundos · <em style="font-style:normal;opacity:.72">Kimsa Pacha</em>
+          {{ ic.ui('chevron', 'chevron') }}
+        </button>
+        <div class="desplegable" id="menuMundos" role="menu" aria-labelledby="btnMundos">
+          {% for clave, m in mundos.items() %}
+          <a class="desplegable-item" role="menuitem" href="{{ url_for('mundo', slug=m.slug) }}">
+            <span class="desplegable-punto" style="background: var(--{{ clave }})"></span>
+            <span>
+              <span class="desplegable-nombre">{{ m.nombre }}</span>
+              <span class="desplegable-desc">{{ m.rubro }} — {{ m.esencia }}</span>
+            </span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% if campana.activa %}
+      <a class="nav-link nav-link-campana" href="{{ url_for('kusi_navidad') }}">{{ campana.nombre }}</a>
+      {% endif %}
+
+      <a class="nav-link" href="{{ url_for('nosotros') }}">Nosotros</a>
+    </nav>
+
+    <div class="acciones">
+      <button class="icono-btn" onclick="abrirCarrito()" aria-label="Abrir carrito">
+        {{ ic.ui('carrito') }}
+        <span class="badge" id="badge">0</span>
+      </button>
+      <button class="icono-btn menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        {{ ic.ui('menu') }}
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<main>
+  {% block contenido %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-marca">
+          {{ ic.marca() }}
+          <span>APU MARKET</span>
+        </div>
+        <p>Marketplace inspirado en la cosmovisión andina de los tres mundos. Conectamos lo que
+           nace de la tierra, lo que viene de lejos y lo que se hace a tu medida.</p>
+        <p style="margin-top:14px;font-size:.8rem;opacity:.75">{{ empresa.razon_social }}</p>
+      </div>
+
+      <div>
+        <h4>Tres Mundos</h4>
+        {% for clave, m in mundos.items() %}
+        <a href="{{ url_for('mundo', slug=m.slug) }}">{{ m.nombre }} — {{ m.rubro }}</a>
+        {% endfor %}
+        {% if campana.activa %}
+        <a href="{{ url_for('kusi_navidad') }}">{{ campana.nombre }}</a>
+        {% endif %}
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <a href="https://wa.me/{{ empresa.whatsapp }}" target="_blank" rel="noopener">WhatsApp {{ empresa.whatsapp_visible }}</a>
+        <a href="mailto:{{ empresa.correo }}">{{ empresa.correo }}</a>
+        <p style="padding:5px 0">{{ empresa.zona_atencion }}</p>
+        <p style="padding:5px 0">{{ empresa.horario }}</p>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <a href="{{ url_for('nosotros') }}">Nosotros</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Envíos y devoluciones</a>
+        <a href="{{ url_for('reclamaciones') }}" class="reclamaciones-link">
+          {{ ic.ui('libro') }} Libro de Reclamaciones
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-legal">
+      <p class="footer-frase">«Ayni kawsay — vivir en reciprocidad»</p>
+      <p class="footer-copy">© {{ anio }} {{ empresa.razon_social }} · Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Carrito -->
+<div class="carrito-fondo" id="carritoFondo" onclick="cerrarCarrito()"></div>
+<aside class="carrito" id="carrito" aria-label="Carrito de compras">
+  <div class="carrito-cabecera">
+    <h2>Tu carrito</h2>
+    <button class="carrito-cerrar" onclick="cerrarCarrito()" aria-label="Cerrar carrito">{{ ic.ui('cerrar') }}</button>
+  </div>
+  <div class="carrito-cuerpo" id="carritoCuerpo">
+    <div class="carrito-vacio">
+      {{ ic.ui('carrito') }}
+      <p>Tu carrito está vacío</p>
+      <p style="font-size:.85rem;margin-top:6px">Explora los tres mundos y encuentra algo especial.</p>
+    </div>
+  </div>
+  <div class="carrito-pie" id="carritoPie" hidden>
+    <div class="carrito-total">
+      <span>Total</span>
+      <span id="carritoTotal">S/ 0.00</span>
+    </div>
+    <p class="carrito-nota">El envío se coordina por WhatsApp según tu distrito. Elige una preferencia de pago para agilizar la atención.</p>
+    <label class="campo-pago" for="metodoPago">
+      <span>Método de pago preferido</span>
+      <select id="metodoPago">
+        <option value="">Aún por coordinar</option>
+        {% for pago in pagos %}
+        <option value="{{ pago.nombre }}">{{ pago.nombre }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <button class="btn btn-whatsapp btn-bloque" onclick="pedirPorWhatsApp()">
+      {{ ic.ui('whatsapp') }} Pedir por WhatsApp
+    </button>
+  </div>
+</aside>
+
+<div class="toast" id="toast">{{ ic.ui('check') }}<span id="toastMsg">Producto agregado</span></div>
+
+<script>
+  window.APU = {
+    whatsapp: "{{ empresa.whatsapp }}",
+    negocio: "APU Market"
+  };
+</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

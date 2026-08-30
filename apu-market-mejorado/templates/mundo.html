@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% import "_componentes.html" as c %}
+{% import "_iconos.html" as ic %}
+
+{% block titulo %}{{ mundo.nombre }} — {{ mundo.rubro }} | APU Market{% endblock %}
+{% block descripcion %}{{ mundo.descripcion }}{% endblock %}
+
+{% block contenido %}
+
+<section class="mundo-hero {{ clave }}">
+  <div class="contenedor">
+    {{ ic.mundo(clave, 'mundo-icono') }}
+    <h1>{{ mundo.nombre }}</h1>
+    <p class="trad">{{ mundo.traduccion }} — {{ mundo.esencia }}</p>
+    <p>{{ mundo.descripcion }}</p>
+  </div>
+</section>
+
+<div class="contenedor">
+  <nav class="migas" aria-label="Ruta">
+    <a href="{{ url_for('home') }}">Inicio</a> / <span>{{ mundo.nombre }}</span>
+  </nav>
+</div>
+
+<section class="seccion" style="padding-top:24px">
+  <div class="contenedor">
+
+    {% if regiones %}
+    <div class="filtros" role="group" aria-label="Filtrar por región de origen">
+      <a class="filtro {% if not region_activa %}activo{% endif %}"
+         href="{{ url_for('mundo', slug=mundo.slug) }}">Todo el Perú</a>
+      {% for cod, nombre in regiones.items() %}
+      <a class="filtro {% if region_activa == cod %}activo{% endif %}"
+         href="{{ url_for('mundo', slug=mundo.slug, region=cod) }}">{{ nombre }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ c.grilla(productos) }}
+  </div>
+</section>
+
+<div class="separador"></div>
+
+<section class="seccion">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Sigue explorando</p>
+      <h2>Los otros mundos</h2>
+    </div>
+    <div class="mundos-grid">
+      {% for k, m in mundos.items() if k != clave %}
+      <a class="mundo-card {{ k }}" href="{{ url_for('mundo', slug=m.slug) }}">
+        {{ ic.mundo(k, 'mundo-icono') }}
+        <h3>{{ m.nombre }}</h3>
+        <div class="mundo-trad">{{ m.traduccion }} — {{ m.esencia }}</div>
+        <p>{{ m.descripcion }}</p>
+        <div class="mundo-pie">
+          <span class="mundo-rubro">{{ m.rubro }}</span>
+          {{ ic.ui('flecha', 'mundo-flecha') }}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

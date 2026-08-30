@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "_componentes.html" as c %}
+{% import "_iconos.html" as ic %}
+
+{% block titulo %}Campaña no disponible | APU Market{% endblock %}
+
+{% block contenido %}
+<section class="seccion" style="padding:110px 0 60px">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Fuera de temporada</p>
+      <h2>La campaña todavía no está abierta</h2>
+      <p>
+        Cuando llegue la temporada la anunciaremos aquí y en nuestro WhatsApp.
+        Mientras tanto, los tres mundos siguen abiertos.
+      </p>
+      <div class="hero-cta" style="margin-top:26px">
+        <a href="{{ url_for('home') }}" class="btn btn-primario">Ir a la tienda {{ ic.ui('flecha') }}</a>
+      </div>
+    </div>
+    {{ c.tarjetas_mundos(mundos) }}
+  </div>
+</section>
+{% endblock %}

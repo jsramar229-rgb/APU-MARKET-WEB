@@ -1,0 +1,50 @@
+FOTOS DE PRODUCTO
+=================
+
+Aqui van las fotos. Cada archivo se conecta con su producto por el campo
+"foto" en catalogo.py:
+
+    "foto": "miel-de-abeja-andina.webp",
+
+Mientras el campo este en None se muestra el icono de respaldo. Nada se
+rompe si todavia no hay foto: puedes ir cargandolas de a pocas.
+
+ESPECIFICACIONES
+----------------
+Formato    WebP de preferencia (pesa un tercio menos que JPG con la misma
+           calidad). JPG tambien sirve.
+Medidas    1000 x 1000 px, cuadradas. El cuadrado mantiene la grilla pareja
+           aunque los productos tengan formas muy distintas.
+Peso       Menos de 150 KB por foto ya comprimida. NO subir la foto de 4 MB
+           que sale del celular: con 24 productos la pagina se arrastra.
+Nombre     minusculas, sin tildes ni espacios, guiones entre palabras.
+           Lo mas simple es usar el mismo slug del producto.
+
+COMO SE VEN MEJOR
+-----------------
+Fotografia todo sobre FONDO CREMA, el mismo #F4EFE4 del sitio. Una cartulina
+mate de ese tono y luz natural de ventana bastan. Cuando todas las fotos
+comparten fondo, la grilla se ve como un catalogo profesional en vez de como
+un collage, y el fondo desaparece contra la pagina.
+
+Luz de ventana de costado, sin flash. El flash directo aplana el producto y
+mete brillos duros en frascos y envases.
+
+PARA COMPRIMIR Y CONVERTIR
+--------------------------
+squoosh.app  -> gratis, en el navegador, no instala nada. Arrastras la foto,
+                eliges WebP, mueves la calidad hasta quedar bajo 150 KB.
+
+
+FOTOGRAFÍAS REFERENCIALES INCORPORADAS EN LA DEMO
+--------------------------------------------------
+Estas imágenes se incorporaron para probar la experiencia visual y deben sustituirse por fotografías propias del producto real antes de publicar.
+
+- miel-de-abeja-andina.jpg — resultado de búsqueda de Unsplash, fotografía de miel.
+- cafe-tostado-altura.jpg — resultado de búsqueda de Unsplash, fotografía de granos de café.
+- audifonos-cancelacion-ruido.jpg — Wikimedia Commons, “Headphones 1.jpg”.
+- llavero-3d-personalizado.jpg — fotografía encontrada en Etsy, usada solo como referencia visual.
+- retablo-ayacuchano-nacimiento.jpg — fotografía de un retablo navideño artesanal, usada solo como referencia visual.
+- canasta-kimsa-tres-mundos.jpeg — fotografía de canasta de regalo, usada solo como referencia visual.
+
+Antes de publicar: confirmar licencia de cada recurso o reemplazar todos los archivos por fotos tomadas por APU Market, idealmente cuadradas, con fondo crema #F4EFE4 y sin marcas de terceros.

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% import "_componentes.html" as c %}
+{% import "_iconos.html" as ic %}
+
+{% block titulo %}{{ campana.nombre }} | APU Market{% endblock %}
+{% block descripcion %}{{ campana.descripcion }}{% endblock %}
+
+{% block contenido %}
+
+<section class="campana-hero">
+  <div class="contenedor">
+    <span class="campana-nota">Edición especial</span>
+    <h1>{{ campana.nombre }}</h1>
+    <p class="lema">{{ campana.lema }}</p>
+    <p>{{ campana.descripcion }}</p>
+  </div>
+</section>
+
+<div class="contenedor">
+  <nav class="migas" aria-label="Ruta">
+    <a href="{{ url_for('home') }}">Inicio</a> / <span>{{ campana.nombre }}</span>
+  </nav>
+</div>
+
+{# La campaña no es un cuarto mundo: atraviesa los tres.
+   Por eso la colección se presenta agrupada por mundo de origen. #}
+{% for clave, m in mundos.items() %}
+  {% set items = productos | selectattr('mundo', 'equalto', clave) | list %}
+  {% if items %}
+  <section class="seccion {% if loop.index is odd %}seccion-alt{% endif %}" style="padding:56px 0">
+    <div class="contenedor">
+      <div class="seccion-cabecera" style="margin-bottom:34px">
+        <p class="seccion-etiqueta">Desde {{ m.nombre }}</p>
+        <h2 style="font-size:1.7rem">{{ m.lema }}</h2>
+      </div>
+      {{ c.grilla(items) }}
+    </div>
+  </section>
+  {% endif %}
+{% endfor %}
+
+<section class="campana-franja">
+  <div class="contenedor">
+    <h2>¿Quieres una canasta a medida?</h2>
+    <p>
+      Armamos canastas combinando productos de los tres mundos según tu presupuesto
+      y la cantidad de personas. Escríbenos y la cotizamos contigo.
+    </p>
+    <a href="https://wa.me/{{ empresa.whatsapp }}?text={{ 'Hola APU Market, quiero cotizar una canasta de Kusi Navidad 2026.' | urlencode }}"
+       target="_blank" rel="noopener" class="btn btn-linea">
+      {{ ic.ui('whatsapp') }} Cotizar por WhatsApp
+    </a>
+  </div>
+</section>
+
+{% endblock %}

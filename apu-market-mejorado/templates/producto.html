@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% import "_componentes.html" as c %}
+{% import "_iconos.html" as ic %}
+
+{% block titulo %}{{ p.nombre }} | APU Market{% endblock %}
+{% block descripcion %}{{ p.desc }}{% endblock %}
+
+{% block contenido %}
+
+<div class="contenedor">
+  <nav class="migas" aria-label="Ruta">
+    <a href="{{ url_for('home') }}">Inicio</a> /
+    <a href="{{ url_for('mundo', slug=mundo.slug) }}">{{ mundo.nombre }}</a> /
+    <span>{{ p.nombre }}</span>
+  </nav>
+</div>
+
+<section class="ficha">
+  <div class="contenedor">
+    <div class="ficha-grid">
+
+      <div class="ficha-visual">
+        {{ c.visual_producto(p, 'alto') }}
+      </div>
+
+      <div class="ficha-datos">
+        <a class="ficha-mundo {{ p.mundo }}" href="{{ url_for('mundo', slug=mundo.slug) }}">
+          <span class="desplegable-punto" style="background: var(--{{ p.mundo }})"></span>
+          {{ mundo.nombre }} — {{ mundo.rubro }}
+        </a>
+
+        <h1>{{ p.nombre }}</h1>
+        <p class="ficha-desc">{{ p.desc }}</p>
+
+        {% if p.region and regiones.get(p.region) %}
+        <a class="ficha-region" href="{{ url_for('mundo', slug=mundo.slug, region=p.region) }}">
+          {{ ic.ui('lugar') }} Origen: {{ regiones[p.region] }} del Perú
+        </a>
+        {% endif %}
+
+        <div class="ficha-precio">
+          <span>S/</span>{{ '%.2f'|format(p.precio) }}
+        </div>
+
+        <div class="ficha-acciones">
+          <button class="btn btn-primario js-agregar"
+                  data-id="{{ p.id }}"
+                  data-nombre="{{ p.nombre }}"
+                  data-precio="{{ p.precio }}"
+                  data-mundo="{{ p.mundo }}"
+                  data-foto="{{ p.foto or '' }}"
+                  type="button">
+            {{ ic.ui('mas') }} Agregar al carrito
+          </button>
+          <a class="btn btn-whatsapp"
+             href="https://wa.me/{{ empresa.whatsapp }}?text={{ ('Hola APU Market, quiero consultar por: ' ~ p.nombre) | urlencode }}"
+             target="_blank" rel="noopener">
+            {{ ic.ui('whatsapp') }} Consultar
+          </a>
+        </div>
+
+        {% if p.envio %}
+        <ul class="ficha-resumen">
+          {% for etiqueta, valor in p.envio.items() %}
+          <li><strong>{{ etiqueta }}:</strong> {{ valor }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="pagos-ficha">
+          <div class="pagos-ficha-cabecera">
+            <span class="pagos-sello">Compra acompañada</span>
+            <strong>Elige cómo pagar</strong>
+          </div>
+          <p>Selecciona tu preferencia en el carrito. Confirmaremos disponibilidad, envío y datos de pago por WhatsApp antes de cobrar.</p>
+          <div class="pagos-mini-grid">
+            {% for pago in pagos %}
+            <span class="pago-mini"><span class="pago-mini-icon">{{ ic.ui(pago.icono) }}</span>{{ pago.nombre }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% if p.descripcion_larga or p.ficha or p.origen %}
+<div class="separador"></div>
+
+<section class="seccion" style="padding:56px 0">
+  <div class="contenedor">
+    <div class="detalle-grid">
+
+      <div class="detalle-texto">
+        {% if p.descripcion_larga %}
+        <h2>Sobre este producto</h2>
+        {% for parrafo in p.descripcion_larga.split('\n\n') %}
+          {% if parrafo.strip() %}<p>{{ parrafo.strip() }}</p>{% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+
+      <aside class="detalle-datos">
+        {{ c.bloque_datos('Ficha técnica', p.ficha) }}
+        {{ c.bloque_datos('Origen', p.origen) }}
+      </aside>
+
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if relacionados %}
+<section class="seccion seccion-alt">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Del mismo mundo</p>
+      <h2>{{ mundo.lema }}</h2>
+    </div>
+    {{ c.grilla(relacionados) }}
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
