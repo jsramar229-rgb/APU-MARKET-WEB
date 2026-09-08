@@ -390,8 +390,13 @@ PRODUCTOS = [
 # ---------------------------------------------------------------------------
 
 _DEFECTOS = {
-    "region": None, "foto": None, "campana": False,
-    "descripcion_larga": "", "ficha": {}, "origen": {}, "envio": {},
+    "region": None,
+    "foto": None,
+    "campana": False,
+    "descripcion_larga": " ",
+    "ficha": {},
+    "origen": {},
+    "envio": {},
 }
 
 for _p in PRODUCTOS:
