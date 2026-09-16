@@ -51,15 +51,15 @@ PRODUCTOS = [
         "nombre": "Miel de abeja andina 500 g",
         "precio": 35.0,
         "icono": "miel",
-        "foto": "miel-de-abeja-andina.jpg",        # foto referencial; reemplazar por foto propia
+        "foto": None,                     # -> "miel-de-abeja-andina.webp"
         "etiqueta": "Orgánico",
         "desc": "Miel pura de valles andinos, cosechada artesanalmente y sin aditivos.",
         "descripcion_larga": (
-            "Miel de textura suave y sabor naturalmente dulce para acompañar desayunos, "
-            "infusiones y preparaciones caseras. La fotografía es referencial hasta contar "
-            "con la imagen del frasco y la etiqueta de la presentación disponible.\n\n"
-            "Antes de publicar, confirma con el productor la zona exacta de procedencia, "
-            "el lote y la fecha de cosecha para comunicar la información con transparencia."
+            "REEMPLAZAR. Un par de párrafos contando qué es el producto, de dónde "
+            "viene y por qué vale la pena. Este es el texto que más ayuda a vender "
+            "y el que Google lee para posicionarte.\n\n"
+            "Escribe como le hablarías a alguien en el mostrador: qué lo hace "
+            "distinto, cómo se usa, con qué combina."
         ),
         "ficha": {
             "Contenido neto": "500 g",
@@ -68,9 +68,9 @@ PRODUCTOS = [
             "Conservación": "En lugar fresco y seco, lejos de la luz directa",
         },
         "origen": {
-            "Región": "Sierra del Perú",
-            "Zona": "Confirmar valle o distrito de procedencia",
-            "Productor": "Confirmar nombre del productor o cooperativa",
+            "Región": "REEMPLAZAR con la región real",
+            "Zona": "REEMPLAZAR con el valle o distrito",
+            "Productor": "REEMPLAZAR o quitar esta fila",
         },
         "envio": {
             "Disponibilidad": "En stock",
@@ -106,23 +106,10 @@ PRODUCTOS = [
     {
         "id": 5, "slug": "cafe-tostado-altura-500g", "mundo": "kay", "region": "selva",
         "nombre": "Café tostado de altura 500 g", "precio": 32.0,
-        "icono": "taza", "foto": "cafe-tostado-altura.jpg", "etiqueta": "Orgánico",
+        "icono": "taza", "foto": None, "etiqueta": "Orgánico",
         "desc": "Café arábica de sombra, tueste medio, notas florales.",
-        "descripcion_larga": (
-            "Un café de perfil aromático y tueste medio para disfrutar en casa, en prensa, "
-            "cafetera o método filtrado. La imagen es referencial hasta contar con la foto "
-            "del empaque real.\n\n"
-            "Confirma la fecha de tostado, la presentación disponible y la procedencia exacta "
-            "con APU Market antes de realizar el pago."
-        ),
-        "ficha": {
-            "Contenido neto": "500 g",
-            "Tipo": "Café arábica de sombra",
-            "Tueste": "Medio",
-            "Preparación": "Filtrado, prensa francesa o cafetera",
-        },
-        "origen": {"Región declarada": "Selva del Perú", "Procedencia exacta": "Confirmar antes de publicar"},
-        "envio": {"Disponibilidad": "Confirmar stock", "Entrega en Lima": "24 a 48 horas", "Provincias": "3 a 5 días hábiles"},
+        "descripcion_larga": "",
+        "ficha": {}, "origen": {}, "envio": {},
     },
     {
         "id": 6, "slug": "chia-organica-500g", "mundo": "kay", "region": "costa",
@@ -137,80 +124,135 @@ PRODUCTOS = [
     # HANAN PACHA — Importados
     # =====================================================================
 
-    # ---- EJEMPLO COMPLETO para un importado ----
+    # ---- Catálogo real de bazar importado (APU Market) ----
     {
-        "id": 7,
-        "slug": "audifonos-cancelacion-ruido",
+        "id": 25,
+        "slug": "bufanda-cashmere-roja",
         "mundo": "hanan",
         "region": None,
-        "nombre": "Audífonos con cancelación de ruido",
-        "precio": 320.0,
-        "icono": "audifonos",
-        "foto": "audifonos-cancelacion-ruido.jpg",
+        "nombre": "Bufanda cashmere roja",
+        "precio": 18.0,
+        "icono": "polo",
+        "foto": "bufanda-cashmere-roja.webp",
         "etiqueta": "Importado",
-        "desc": "Cancelación activa, batería de larga duración y estuche de carga.",
-        "descripcion_larga": (
-            "Audífonos inalámbricos pensados para concentrarte, viajar o escuchar música "
-            "con mayor comodidad. La fotografía es referencial hasta contar con la imagen "
-            "del modelo exacto que se encuentre disponible.\n\n"
-            "Antes de pagar, confirma el modelo, el color, la fecha de entrega y el plazo "
-            "de garantía aplicable a tu compra."
-        ),
+        "desc": "Bufanda tipo cashmere con flecos, tejido suave para climas fríos.",
+        "descripcion_larga": "",
         "ficha": {
-            "Marca y modelo": "Confirmar modelo disponible",
-            "Conectividad": "Bluetooth 5.3",
-            "Autonomía": "Hasta 30 horas con estuche (confirmar modelo)",
-            "Incluye": "Estuche de carga, cable USB-C, almohadillas de repuesto",
-            "Garantía": "Confirmar plazo y condiciones antes de publicar",
+            "Color": "Rojo (también disponible en gris)",
+            "Material": "Tipo cashmere",
         },
-        "origen": {
-            "Procedencia": "Confirmar país de importación",
-            "Importado por": "APU 3D Soluciones Integrales S.A.C.",
-        },
-        "envio": {
-            "Disponibilidad": "Confirmar stock o pedido especial",
-            "Entrega en Lima": "24 a 48 horas",
-            "Provincias": "3 a 5 días hábiles",
-        },
+        "origen": {"Importado por": "APU 3D Soluciones Integrales S.A.C."},
+        "envio": {"Disponibilidad": "En stock", "Entrega en Lima": "24 a 48 horas", "Provincias": "3 a 5 días hábiles"},
     },
-
     {
-        "id": 8, "slug": "reloj-inteligente-deportivo", "mundo": "hanan", "region": None,
-        "nombre": "Reloj inteligente deportivo", "precio": 280.0,
-        "icono": "reloj", "foto": None, "etiqueta": "Importado",
-        "desc": "Monitor de actividad y sueño, GPS integrado, resistente al agua.",
+        "id": 26, "slug": "bufanda-cashmere-gris", "mundo": "hanan", "region": None,
+        "nombre": "Bufanda cashmere gris", "precio": 18.0,
+        "icono": "polo", "foto": "bufanda-cashmere-gris.webp", "etiqueta": "Importado",
+        "desc": "Bufanda tipo cashmere tejida, color gris plomo, ideal para uso diario.",
         "descripcion_larga": "",
         "ficha": {}, "origen": {}, "envio": {},
     },
     {
-        "id": 9, "slug": "proyector-portatil-full-hd", "mundo": "hanan", "region": None,
-        "nombre": "Proyector portátil full HD", "precio": 420.0,
-        "icono": "proyector", "foto": None, "etiqueta": "Importado",
-        "desc": "Cine en casa. Se conecta al celular por cable o de forma inalámbrica.",
+        "id": 27, "slug": "gorro-lana-orejitas-animalito", "mundo": "hanan", "region": None,
+        "nombre": "Gorro de lana orejitas (diseño animalito)", "precio": 10.0,
+        "icono": "gorra", "foto": "gorro-lana-orejitas-animalito.webp", "etiqueta": "Importado",
+        "desc": "Gorro tejido con orejeras, pompones y aplique de carita de animalito.",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Mostaza"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 28, "slug": "gorro-lana-pompon-oso", "mundo": "hanan", "region": None,
+        "nombre": "Gorro de lana con pompón (diseño oso)", "precio": 10.0,
+        "icono": "gorra", "foto": "gorro-lana-pompon-oso.webp", "etiqueta": "Importado",
+        "desc": "Gorro tejido gris con diseño bordado de osito y pompón de peluche, franja azul.",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Gris"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 29, "slug": "estuche-organizador-viaje-rosa", "mundo": "hanan", "region": None,
+        "nombre": "Estuche organizador de viaje rosa", "precio": 5.0,
+        "icono": "funda", "foto": "estuche-organizador-viaje-rosa.webp", "etiqueta": "Importado",
+        "desc": "Estuche compacto con cierre metálico, ideal para joyas o accesorios de viaje.",
         "descripcion_larga": "",
         "ficha": {}, "origen": {}, "envio": {},
     },
     {
-        "id": 10, "slug": "camara-accion-4k", "mundo": "hanan", "region": None,
-        "nombre": "Cámara de acción 4K", "precio": 380.0,
-        "icono": "camara", "foto": None, "etiqueta": "Importado",
-        "desc": "Estabilización electrónica y carcasa sumergible para exteriores.",
+        "id": 30, "slug": "estuche-organizador-viaje-turquesa", "mundo": "hanan", "region": None,
+        "nombre": "Estuche organizador de viaje turquesa", "precio": 5.0,
+        "icono": "funda", "foto": "estuche-organizador-viaje-turquesa.webp", "etiqueta": "Importado",
+        "desc": "Estuche compacto con doble cierre, color turquesa, para joyas o accesorios.",
         "descripcion_larga": "",
         "ficha": {}, "origen": {}, "envio": {},
     },
     {
-        "id": 11, "slug": "tableta-grafica-con-lapiz", "mundo": "hanan", "region": None,
-        "nombre": "Tableta gráfica con lápiz", "precio": 260.0,
-        "icono": "tableta", "foto": None, "etiqueta": "Importado",
-        "desc": "Superficie sensible a la presión para dibujo y diseño digital.",
+        "id": 31, "slug": "organizador-colgante-hello-animals", "mundo": "hanan", "region": None,
+        "nombre": "Organizador colgante Hello Animals", "precio": 8.0,
+        "icono": "funda", "foto": "organizador-colgante-hello-animals.webp", "etiqueta": "Importado",
+        "desc": "Organizador de tela colgante con 3 bolsillos, diseño zorrito \"Hello Animals\".",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Terracota"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 32, "slug": "colitas-cabello-caja-flor", "mundo": "hanan", "region": None,
+        "nombre": "Set de colitas para cabello (caja flor)", "precio": 4.0,
+        "icono": "adorno", "foto": "colitas-cabello-caja-flor.webp", "etiqueta": "Importado",
+        "desc": "Set surtido de colitas de cabello en estuche plástico en forma de flor, colores variados.",
         "descripcion_larga": "",
         "ficha": {}, "origen": {}, "envio": {},
     },
     {
-        "id": 12, "slug": "parlante-inalambrico-resistente-agua", "mundo": "hanan", "region": None,
-        "nombre": "Parlante inalámbrico resistente al agua", "precio": 190.0,
-        "icono": "parlante", "foto": None, "etiqueta": "Importado",
-        "desc": "Sonido envolvente, doce horas de autonomía, uso en exteriores.",
+        "id": 33, "slug": "colitas-cabello-fashion", "mundo": "hanan", "region": None,
+        "nombre": "Set de colitas para cabello Fashion", "precio": 3.0,
+        "icono": "adorno", "foto": "colitas-cabello-fashion.webp", "etiqueta": "Importado",
+        "desc": "Set de colitas de cabello acolchadas en empaque \"Fashion\", colores variados.",
+        "descripcion_larga": "",
+        "ficha": {}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 34, "slug": "diadema-peluche-flor", "mundo": "hanan", "region": None,
+        "nombre": "Diadema de peluche con flor", "precio": 8.0,
+        "icono": "adorno", "foto": "diadema-peluche-flor.webp", "etiqueta": "Importado",
+        "desc": "Diadema de peluche acolchada con aplique de flor.",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Rosado"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 35, "slug": "diadema-peluche-conejito", "mundo": "hanan", "region": None,
+        "nombre": "Diadema de peluche conejito", "precio": 8.0,
+        "icono": "adorno", "foto": "diadema-peluche-conejito.webp", "etiqueta": "Importado",
+        "desc": "Diadema de peluche suave con aplique de conejito.",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Lila"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 36, "slug": "diadema-orejas-conejo", "mundo": "hanan", "region": None,
+        "nombre": "Diadema de orejas de peluche", "precio": 8.0,
+        "icono": "adorno", "foto": "diadema-orejas-conejo.webp", "etiqueta": "Importado",
+        "desc": "Diadema de peluche con orejas largas tipo conejito, disponible en crema y rosado.",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Crema / Rosado"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 37, "slug": "encendedor-usb-recargable", "mundo": "hanan", "region": None,
+        "nombre": "Encendedor USB recargable", "precio": 8.0,
+        "icono": "regalo", "foto": "encendedor-usb-recargable.webp", "etiqueta": "Importado",
+        "desc": "Encendedor de arco eléctrico recargable por USB, sin gas, ideal para cocina o parrilla.",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Azul"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 38, "slug": "cable-carga-magnetico-uslion", "mundo": "hanan", "region": None,
+        "nombre": "Cable de carga magnético USLION", "precio": 15.0,
+        "icono": "regalo", "foto": "cable-carga-magnetico-uslion.webp", "etiqueta": "Importado",
+        "desc": "Cable de carga con conector magnético, marca USLION, disponible en varios colores (rojo, azul, verde, morado, negro, plateado).",
+        "descripcion_larga": "",
+        "ficha": {"Color": "Surtido"}, "origen": {}, "envio": {},
+    },
+    {
+        "id": 39, "slug": "set-papeleria-mariposas", "mundo": "hanan", "region": None,
+        "nombre": "Set de papelería mariposas", "precio": 3.0,
+        "icono": "cuadro", "foto": "set-papeleria-mariposas.webp", "etiqueta": "Importado",
+        "desc": "Set de papelería con block de notas, regla y stickers. También disponible en diseño panda.",
         "descripcion_larga": "",
         "ficha": {}, "origen": {}, "envio": {},
     },
@@ -228,20 +270,19 @@ PRODUCTOS = [
         "nombre": "Llavero 3D personalizado",
         "precio": 20.0,
         "icono": "llavero",
-        "foto": "llavero-3d-personalizado.jpg",
+        "foto": None,
         "etiqueta": "Personalizado",
         "desc": "Tu nombre, logo o figura impresos en PLA biodegradable.",
         "descripcion_larga": (
-            "Convierte tu nombre, logo o figura en un pequeño objeto hecho a tu medida. "
-            "Envíanos la idea, el texto o el archivo de referencia y te confirmaremos la "
-            "viabilidad, los colores y el acabado antes de producirlo.\n\n"
-            "Recibirás una confirmación del diseño, precio y plazo por WhatsApp. La imagen "
-            "es referencial: el resultado final depende del archivo y las medidas acordadas."
+            "REEMPLAZAR. En personalizados lo decisivo es explicar CÓMO se pide: "
+            "qué necesitas que te manden, en qué formato, cuánto demora y qué pasa "
+            "si el cliente quiere cambios. Mientras más claro esté acá, menos "
+            "preguntas repetidas te llegan por WhatsApp."
         ),
         "ficha": {
             "Material": "PLA biodegradable",
-            "Medidas": "Confirmar según el diseño",
-            "Colores disponibles": "Consultar colores disponibles",
+            "Medidas": "REEMPLAZAR",
+            "Colores disponibles": "REEMPLAZAR",
             "Pedido mínimo": "1 unidad",
         },
         "origen": {
@@ -250,7 +291,7 @@ PRODUCTOS = [
         },
         "envio": {
             "Disponibilidad": "Bajo pedido",
-            "Tiempo de producción": "Confirmar: normalmente 2 a 3 días hábiles",
+            "Tiempo de producción": "REEMPLAZAR: 2 a 3 días hábiles",
             "Qué necesitamos de ti": "El texto o el archivo del logo en PNG o SVG",
             "Entrega en Lima": "24 a 48 horas después de producido",
         },
@@ -333,24 +374,13 @@ PRODUCTOS = [
         "id": 22, "slug": "retablo-ayacuchano-nacimiento", "mundo": "ukhu", "region": "sierra",
         "campana": True,
         "nombre": "Retablo ayacuchano — nacimiento andino", "precio": 180.0,
-        "icono": "retablo", "foto": "retablo-ayacuchano-nacimiento.jpg", "etiqueta": "Kusi Navidad",
+        "icono": "retablo", "foto": None, "etiqueta": "Kusi Navidad",
         "desc": "Pieza hecha a mano por artesanos de Ayacucho. Edición limitada.",
         # Este es el producto más diferenciado del catálogo navideño.
         # Cuando lo cargues de verdad, nombra al artesano o taller: es su
         # trabajo y decirlo es parte de comprar bien.
-        "descripcion_larga": (
-            "Una pieza decorativa para celebrar la Navidad desde una mirada andina. "
-            "Cada retablo puede presentar variaciones propias del trabajo manual, por lo que "
-            "la imagen debe considerarse referencial hasta contar con la pieza disponible."
-        ),
-        "ficha": {
-            "Técnica": "Retablo artesanal",
-            "Tema": "Nacimiento andino",
-            "Edición": "Limitada",
-            "Medidas": "Confirmar pieza disponible",
-        },
-        "origen": {"Región": "Ayacucho, Perú", "Artesano o taller": "Confirmar antes de publicar"},
-        "envio": {"Disponibilidad": "Edición limitada — confirmar stock", "Entrega en Lima": "24 a 48 horas", "Provincias": "3 a 5 días hábiles"},
+        "descripcion_larga": "",
+        "ficha": {}, "origen": {}, "envio": {},
     },
     {
         "id": 23, "slug": "paneton-artesanal-masa-madre", "mundo": "kay", "region": "sierra",
@@ -365,21 +395,11 @@ PRODUCTOS = [
         "id": 24, "slug": "canasta-kimsa-tres-mundos", "mundo": "ukhu", "region": None,
         "campana": True,
         "nombre": "Canasta Kimsa — los tres mundos", "precio": 260.0,
-        "icono": "kimsa", "foto": "canasta-kimsa-tres-mundos.jpeg", "etiqueta": "Kusi Navidad",
+        "icono": "kimsa", "foto": None, "etiqueta": "Kusi Navidad",
         "desc": "Una pieza de cada mundo: orgánico, importado y personalizado.",
         # Producto estrella de la campaña: es la prueba viva del concepto.
-        "descripcion_larga": (
-            "Una selección de regalo que reúne la propuesta de APU Market en una sola caja: "
-            "un detalle orgánico, uno importado y una pieza personalizada. El contenido final "
-            "se confirma contigo por WhatsApp según disponibilidad y presupuesto."
-        ),
-        "ficha": {
-            "Contenido": "Una selección de los tres mundos",
-            "Presentación": "Canasta o empaque de regalo",
-            "Personalización": "Consultar opciones disponibles",
-        },
-        "origen": {"Selección": "Productos peruanos e importados según disponibilidad"},
-        "envio": {"Disponibilidad": "Preventa — confirmar fecha de entrega", "Entrega en Lima": "Coordinar por WhatsApp", "Provincias": "Consultar cobertura"},
+        "descripcion_larga": "",
+        "ficha": {}, "origen": {}, "envio": {},
     },
 ]
 
@@ -390,13 +410,8 @@ PRODUCTOS = [
 # ---------------------------------------------------------------------------
 
 _DEFECTOS = {
-    "region": None,
-    "foto": None,
-    "campana": False,
-    "descripcion_larga": " ",
-    "ficha": {},
-    "origen": {},
-    "envio": {},
+    "region": None, "foto": None, "campana": False,
+    "descripcion_larga": "", "ficha": {}, "origen": {}, "envio": {},
 }
 
 for _p in PRODUCTOS:
