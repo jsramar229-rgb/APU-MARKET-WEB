@@ -4,10 +4,14 @@ APU MARKET — Kimsa Pacha Qhatu
 E-commerce de APU 3D SOLUCIONES INTEGRALES S.A.C.
 """
 import os
-from flask import Flask, render_template, request, abort
-from catalogo import PRODUCTOS
+from flask import Flask
+from persistence.persistence_setup import configure_persistence
+from persistence.order_routes import orders_bp
 
 app = Flask(__name__)
+
+configure_persistence(app)
+app.register_blueprint(orders_bp)
 
 EMPRESA = {
     "razon_social": "APU 3D SOLUCIONES INTEGRALES S.A.C.",
@@ -110,6 +114,10 @@ def mundo(slug):
 @app.errorhandler(404)
 def no_encontrado(e):
     return render_template("404.html"), 404
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}, 200
 
 import os
 
