@@ -4,7 +4,9 @@ APU MARKET — Kimsa Pacha Qhatu
 E-commerce de APU 3D SOLUCIONES INTEGRALES S.A.C.
 """
 import os
-from flask import Flask
+
+from flask import Flask, render_template
+
 from persistence.persistence_setup import configure_persistence
 from persistence.order_routes import orders_bp
 
@@ -25,11 +27,35 @@ EMPRESA = {
 }
 
 PAGOS = [
-    {"id": "yape-plin", "nombre": "Yape o Plin", "detalle": "Pago móvil — confirma el número por WhatsApp", "icono": "movil"},
-    {"id": "transferencia", "nombre": "Transferencia bancaria", "detalle": "Te enviamos los datos de la cuenta al confirmar", "icono": "banco"},
-    {"id": "contra-entrega", "nombre": "Contra entrega", "detalle": "Disponible según distrito y tipo de producto", "icono": "entrega"},
+    {
+        "id": "yape-plin",
+        "nombre": "Yape o Plin",
+        "detalle": "Pago móvil — confirma el número por WhatsApp",
+        "icono": "movil",
+    },
+    {
+        "id": "transferencia",
+        "nombre": "Transferencia bancaria",
+        "detalle": "Te enviamos los datos de la cuenta al confirmar",
+        "icono": "banco",
+    },
+    {
+        "id": "contra-entrega",
+        "nombre": "Contra entrega",
+        "detalle": "Disponible según distrito y tipo de producto",
+        "icono": "entrega",
+    },
 ]
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}, 200
+
+
+@app.errorhandler(404)
+def no_encontrado(error):
+    return render_template("404.html"), 404
+    
 CAMPANA = {
     "activa": True,
     "slug": "kusi-navidad",
@@ -115,12 +141,13 @@ def mundo(slug):
 def no_encontrado(e):
     return render_template("404.html"), 404
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}, 200
 
 import os
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(
+        debug=False,
+        host="0.0.0.0",
+        port=port,
+    )
