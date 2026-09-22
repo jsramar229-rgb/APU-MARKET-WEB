@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: apu-market-web
+    runtime: python
+    rootDir: apu-market-mejorado
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: apu-market-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+databases:
+  - name: apu-market-db
+    databaseName: apu_market
+    user: apu_market_user
+    plan: free
