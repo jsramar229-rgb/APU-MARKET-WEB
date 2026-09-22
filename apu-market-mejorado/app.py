@@ -3,12 +3,15 @@
 APU MARKET — Kimsa Pacha Qhatu
 E-commerce de APU 3D SOLUCIONES INTEGRALES S.A.C.
 """
+
 import os
 
-from flask import Flask, render_template
+from flask import Flask, abort, render_template, request
 
-from persistence.persistence_setup import configure_persistence
+from catalogo import PRODUCTOS
 from persistence.order_routes import orders_bp
+from persistence.persistence_setup import configure_persistence
+
 
 app = Flask(__name__)
 
@@ -47,14 +50,6 @@ PAGOS = [
     },
 ]
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}, 200
-
-
-@app.errorhandler(404)
-def no_encontrado(error):
-    return render_template("404.html"), 404
     
 CAMPANA = {
     "activa": True,
@@ -138,11 +133,14 @@ def mundo(slug):
     return render_template("mundo.html", mundo=MUNDOS[clave], clave=clave, productos=items, regiones=REGIONES if clave == "kay" else None, region_activa=region)
 
 @app.errorhandler(404)
-def no_encontrado(e):
+def no_encontrado(error):
     return render_template("404.html"), 404
 
 
-import os
+@app.get("/health")
+def health():
+    return {"status": "ok"}, 200
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
