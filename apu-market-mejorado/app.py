@@ -8,7 +8,7 @@ import os
 
 from flask import Flask, abort, render_template, request
 
-from catalogo import PRODUCTOS
+from catalogo import PRODUCTOS, TRABAJOS
 from persistence.order_routes import orders_bp
 from persistence.persistence_setup import configure_persistence
 
@@ -130,7 +130,7 @@ def mundo(slug):
     items = productos_de(clave, campana=False)
     if clave == "kay" and region in REGIONES:
         items = [p for p in items if p.get("region") == region]
-    return render_template("mundo.html", mundo=MUNDOS[clave], clave=clave, productos=items, regiones=REGIONES if clave == "kay" else None, region_activa=region)
+    return render_template("mundo.html", mundo=MUNDOS[clave], clave=clave, productos=items, regiones=REGIONES if clave == "kay" else None, region_activa=region, trabajos=[t for t in TRABAJOS if t["mundo"] == clave])
 
 @app.errorhandler(404)
 def no_encontrado(error):

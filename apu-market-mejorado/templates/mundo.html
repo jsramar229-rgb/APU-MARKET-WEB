@@ -40,6 +40,38 @@
   </div>
 </section>
 
+{% if trabajos %}
+<section class="seccion seccion-alt trabajos">
+  <div class="contenedor">
+    <div class="seccion-cabecera">
+      <p class="seccion-etiqueta">Trabajos realizados</p>
+      <h2>Hecho a la medida de nuestros clientes</h2>
+    </div>
+    <div class="trabajos-grid">
+      {% for t in trabajos %}
+      <figure class="trabajo">
+        <img src="{{ url_for('static', filename='img/trabajos/' ~ t.foto) }}"
+             alt="{{ t.titulo }}" loading="lazy">
+        <figcaption>
+          <strong>{{ t.titulo }}</strong>
+          <span>{{ t.texto }}</span>
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+    <div class="trabajos-cta">
+      <p>¿Tienes una idea? Cuéntanosla y te enviamos una cotización.</p>
+      <a class="btn btn-whatsapp"
+         href="https://wa.me/{{ empresa.whatsapp }}?text={{ 'Hola APU Market, quiero cotizar un trabajo personalizado.' | urlencode }}"
+         target="_blank" rel="noopener">
+        {{ ic.ui('whatsapp') }} Cotizar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
 <div class="separador"></div>
 
 <section class="seccion">

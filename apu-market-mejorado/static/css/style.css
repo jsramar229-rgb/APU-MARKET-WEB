@@ -764,3 +764,13 @@ img { max-width: 100%; display: block; }
 @media (max-width: 760px) {
   .pagos-portada { grid-template-columns: 1fr; max-width: 420px; }
 }
+
+/* ---- Trabajos realizados (galería de Ukhu Pacha) ---- */
+.trabajos-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.trabajo { margin: 0; background: #fff; border-radius: var(--radio-lg); overflow: hidden; box-shadow: 0 1px 3px rgba(26,21,18,.08); display: flex; flex-direction: column; }
+.trabajo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.trabajo figcaption { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+.trabajo figcaption strong { font-size: .97rem; }
+.trabajo figcaption span { font-size: .84rem; color: var(--texto-suave); }
+.trabajos-cta { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; text-align: center; }
+.trabajos-cta p { margin: 0; }

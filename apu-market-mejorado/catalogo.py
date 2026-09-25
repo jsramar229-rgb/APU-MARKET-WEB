@@ -523,3 +523,44 @@ _DEFECTOS = {
 for _p in PRODUCTOS:
     for _clave, _valor in _DEFECTOS.items():
         _p.setdefault(_clave, _valor)
+
+
+# =========================================================================
+# TRABAJOS REALIZADOS — galería de Ukhu Pacha
+# =========================================================================
+# Fotos reales de pedidos ya entregados. No son productos con precio: sirven
+# para mostrar lo que se puede hacer. Las imágenes van en static/img/trabajos/.
+# mundo: en qué página aparece la galería ("ukhu").
+
+TRABAJOS = [
+    {
+        "mundo": "ukhu",
+        "foto": "trofeo-gota-de-agua.webp",
+        "titulo": "Trofeos gota de agua",
+        "texto": "Gota sostenida por dos manos, impresa en 3D, sobre base de madera con placa grabada.",
+    },
+    {
+        "mundo": "ukhu",
+        "foto": "trofeo-llama.webp",
+        "titulo": "Trofeos llama",
+        "texto": "Figura de llama impresa en 3D con acabado metalizado, en varios colores, con placa del cliente.",
+    },
+    {
+        "mundo": "ukhu",
+        "foto": "trofeo-globo.webp",
+        "titulo": "Trofeos globo terráqueo",
+        "texto": "Globo calado impreso en 3D con el emblema del evento, sobre base con placa grabada.",
+    },
+    {
+        "mundo": "ukhu",
+        "foto": "modelado-3d-trofeo.webp",
+        "titulo": "Del diseño a la pieza",
+        "texto": "Modelamos cada pieza en 3D antes de imprimirla, para que la apruebes antes de producir.",
+    },
+    {
+        "mundo": "ukhu",
+        "foto": "lampara-luna-foto.webp",
+        "titulo": "Lámpara luna con tu foto",
+        "texto": "La fotografía queda grabada en relieve y aparece al encender la luz.",
+    },
+]
