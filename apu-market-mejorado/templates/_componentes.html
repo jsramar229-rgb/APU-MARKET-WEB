@@ -10,7 +10,12 @@
   {% else %}
     {{ ic.producto(p.icono) }}
   {% endif %}
+  {# El sello solo se muestra en productos de campaña (p.ej. Kusi Navidad).
+     Repetir el nombre del mundo ("Importado", "Orgánico"...) sobre cada foto
+     no aporta nada: la sección ya lo dice. #}
+  {% if p.campana and p.etiqueta %}
   <span class="producto-etiqueta">{{ p.etiqueta }}</span>
+  {% endif %}
 </div>
 {% endmacro %}
 
