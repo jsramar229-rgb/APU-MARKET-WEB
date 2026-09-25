@@ -42,82 +42,36 @@ PRODUCTOS = [
     # KAY PACHA — Orgánicos
     # =====================================================================
 
-    # ---- EJEMPLO COMPLETO: copia este bloque como plantilla ----
+    # ---- Proveedor real: Bioselva Natura (Satipo, Junín) ----
     {
-        "id": 1,
-        "slug": "miel-de-abeja-andina",
+        "id": 40,
+        "slug": "aceite-de-coco-cocolife-450ml",
         "mundo": "kay",
-        "region": "sierra",
-        "nombre": "Miel de abeja andina 500 g",
-        "precio": 35.0,
-        "icono": "miel",
-        "foto": None,                     # -> "miel-de-abeja-andina.webp"
-        "etiqueta": "Orgánico",
-        "desc": "Miel pura de valles andinos, cosechada artesanalmente y sin aditivos.",
+        "region": "selva",
+        "nombre": "Aceite de coco Cocolife 450 ml",
+        "precio": 38.0,
+        "icono": "botella",
+        "foto": None,
+        "etiqueta": "",
+        "desc": "Aceite de coco virgen prensado en frío, de coco de la Amazonía peruana. Frasco de vidrio.",
         "descripcion_larga": (
-            "REEMPLAZAR. Un par de párrafos contando qué es el producto, de dónde "
-            "viene y por qué vale la pena. Este es el texto que más ayuda a vender "
-            "y el que Google lee para posicionarte.\n\n"
-            "Escribe como le hablarías a alguien en el mostrador: qué lo hace "
-            "distinto, cómo se usa, con qué combina."
+            "Aceite de coco virgen elaborado con la pulpa blanca del coco de la "
+            "Amazonía peruana y extraído por prensado en frío. Viene en frasco de "
+            "vidrio de 450 ml.\n\n"
+            "Lo produce Bioselva Natura, empresa de Satipo, en la selva central del Perú."
         ),
         "ficha": {
-            "Contenido neto": "500 g",
-            "Presentación": "Frasco de vidrio con tapa de seguridad",
-            "Ingredientes": "100 % miel de abeja",
-            "Conservación": "En lugar fresco y seco, lejos de la luz directa",
+            "Marca": "Cocolife",
+            "Contenido": "450 ml",
+            "Tipo": "Aceite de coco virgen, prensado en frío",
+            "Envase": "Frasco de vidrio",
         },
         "origen": {
-            "Región": "REEMPLAZAR con la región real",
-            "Zona": "REEMPLAZAR con el valle o distrito",
-            "Productor": "REEMPLAZAR o quitar esta fila",
+            "Productor": "Bioselva Natura",
+            "Ubicación del productor": "Satipo, Junín",
+            "Origen del coco": "Amazonía peruana",
         },
-        "envio": {
-            "Disponibilidad": "En stock",
-            "Entrega en Lima": "24 a 48 horas",
-            "Provincias": "3 a 5 días hábiles",
-        },
-    },
-
-    {
-        "id": 2, "slug": "quinua-organica-1kg", "mundo": "kay", "region": "sierra",
-        "nombre": "Quinua orgánica 1 kg", "precio": 18.0,
-        "icono": "grano", "foto": None, "etiqueta": "Orgánico",
-        "desc": "Quinua real de Puno. Proteína completa, el grano de oro de los Andes.",
-        "descripcion_larga": "",
-        "ficha": {}, "origen": {}, "envio": {},
-    },
-    {
-        "id": 3, "slug": "maca-negra-polvo-250g", "mundo": "kay", "region": "sierra",
-        "nombre": "Maca negra en polvo 250 g", "precio": 25.0,
-        "icono": "raiz", "foto": None, "etiqueta": "Orgánico",
-        "desc": "Maca de Junín, energía de altura. Superalimento tradicional.",
-        "descripcion_larga": "",
-        "ficha": {}, "origen": {}, "envio": {},
-    },
-    {
-        "id": 4, "slug": "aceite-sacha-inchi-250ml", "mundo": "kay", "region": "selva",
-        "nombre": "Aceite de sacha inchi 250 ml", "precio": 45.0,
-        "icono": "botella", "foto": None, "etiqueta": "Orgánico",
-        "desc": "Omega 3 vegetal de la Amazonía peruana, prensado en frío.",
-        "descripcion_larga": "",
-        "ficha": {}, "origen": {}, "envio": {},
-    },
-    {
-        "id": 5, "slug": "cafe-tostado-altura-500g", "mundo": "kay", "region": "selva",
-        "nombre": "Café tostado de altura 500 g", "precio": 32.0,
-        "icono": "taza", "foto": None, "etiqueta": "Orgánico",
-        "desc": "Café arábica de sombra, tueste medio, notas florales.",
-        "descripcion_larga": "",
-        "ficha": {}, "origen": {}, "envio": {},
-    },
-    {
-        "id": 6, "slug": "chia-organica-500g", "mundo": "kay", "region": "costa",
-        "nombre": "Chía orgánica 500 g", "precio": 15.0,
-        "icono": "grano", "foto": None, "etiqueta": "Orgánico",
-        "desc": "Semillas de alto contenido en fibra para el día a día.",
-        "descripcion_larga": "",
-        "ficha": {}, "origen": {}, "envio": {},
+        "envio": {"Disponibilidad": "En stock", "Coordinación de entrega": "Por WhatsApp, según tu distrito"},
     },
 
     # =====================================================================
